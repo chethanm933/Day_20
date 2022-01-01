@@ -1,18 +1,44 @@
 package com.userregistration;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.junit.jupiter.api.Test;
+
 public class UserRegistration {
 	
 	static Scanner sc = new Scanner(System.in);
 	
 	 public static void main(String[] args) {
+		 
+		 UserRegistration userreg = new UserRegistration();
+		 
+		 System.out.println("enter your firstname");
+		 String name = sc.next();
+		 userreg.name(name);
 		
+		 System.out.println("enter your lastname");
+		 String lastName = sc.next();
+		 userreg.lastName(lastName);
+		 
+		 System.out.println("enter your phone number");
+		 String phone = sc.next();
+		 userreg.phone(phone);
+		 
+		 System.out.println("enter your email");
+		 String email = sc.next();
+		 userreg.email(email);
+		 
+		 System.out.println("enter your firstname");
+		 String password = sc.next();
+		 userreg.password(password);
 	 }
+	 
 		public boolean name(String name) {
 		System.out.println("Enter a First Name");
 		name = sc.next();
@@ -79,5 +105,6 @@ public class UserRegistration {
 		else 
 			return false;
 	}
-	
+		
+		
 }

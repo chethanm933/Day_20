@@ -1,6 +1,6 @@
 package com.userregistration;
 
-import static org.junit.Assert.assertEquals;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.Arrays;
@@ -28,13 +28,13 @@ import org.junit.runners.Parameterized;
 	static UserRegistration userreg;
 	
 	public ParaTest(String name, String lastName, String email, String phone, String password, boolean expectedName,
-			boolean expectedLastName, boolean expectedPhone, boolean expectedEmail, boolean expectedPassword) {
+			boolean expectedLastName, boolean expectedEmail, boolean expectedPhone, boolean expectedPassword) {
 		super();
-//		this.name = name;
-//		this.lastName = lastName;
-//		this.email = email;
-//		this.phone = phone;
-//		this.password = password;
+		this.name = name;
+		this.lastName = lastName;
+		this.email = email;
+		this.phone = phone;
+		this.password = password;
 		this.expectedName = expectedName;
 		this.expectedLastName = expectedLastName;
 		this.expectedPhone = expectedPhone;
@@ -51,16 +51,34 @@ import org.junit.runners.Parameterized;
 
 	@Parameterized.Parameters
 		public static Collection inputs() {
-		return Arrays.asList(new Object[] [] { {"Name","Lastname","email00@gmail.com","+988888888888", "Pass@123",true, true, true, true} } );
+		return Arrays.asList(new Object[] [] {{"","","","","","",false,false,false,false,false}, {"Name","Lastname","email00@gmail.com","+988888888888", "Pass@123",true, true, true, true},{"name","lastname","email123.co@mail.co.in","8971946256","Pass@1+2",false,false,true,true,false} } );
 	}
 	
 	
-@Test
-	public void userTest() {
-	assertEquals(expectedName, userreg.name(name));
+	@Test
+	public void validateFirstName() {
+		assertEquals(expectedName, userreg.name(name));
+	}
+
+	@Test
+	public void validateLastName() {
+		assertEquals(expectedLastName, userreg.lastName(lastName));
+	}
+
+	@Test
+	public void validateContactNumber() {
+		assertEquals(expectedPhone, userreg.phone(phone));
+	}
+
+	@Test
+	public void validateEmailId() {
+		assertEquals(expectedEmail, userreg.email(email));
+	}
 	
-	
-}
+	@Test
+	public void validatePassword() {
+		assertEquals(expectedPassword, userreg.password(password));
+	}
 	
 }
 
